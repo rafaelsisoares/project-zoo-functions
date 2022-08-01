@@ -33,5 +33,4 @@ function getEmployeesCoverage(info) {
   throw new Error('Informações inválidas');
 }
 
-
 module.exports = getEmployeesCoverage;
