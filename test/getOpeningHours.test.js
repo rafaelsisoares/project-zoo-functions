@@ -1,3 +1,27 @@
-const getOpeningHours = require('../src/getOpeningHours');
+const getOpeningHours = require("../src/getOpeningHours");
 
-describe('Testes da função getOpeningHours', () => {});
+describe("Testes da função getOpeningHours", () => {
+  it("Testa se a função retorna um objeto com todos os dias e horários de funcionamento caso não receba parâmetros", () => {
+    expect(getOpeningHours()).toEqual({
+      Tuesday: { open: 8, close: 6 },
+      Wednesday: { open: 8, close: 6 },
+      Thursday: { open: 10, close: 8 },
+      Friday: { open: 10, close: 8 },
+      Saturday: { open: 8, close: 10 },
+      Sunday: { open: 8, close: 8 },
+      Monday: { open: 0, close: 0 },
+    });
+  });
+  it('Testa se ao receber o parâmetro Monday, a função sempre retorna que o zoo está fechado independente do horário passado', () => {
+    const message = 'The zoo is closed';
+    expect(getOpeningHours('Monday', '05:00-AM')).toBe(message);
+    expect(getOpeningHours('Monday', '10:00-AM')).toBe(message);
+    expect(getOpeningHours('Monday', '12:00-PM')).toBe(message);
+    expect(getOpeningHours('Monday', '04:00-PM')).toBe(message);
+    expect(getOpeningHours('Monday', '09:00-PM')).toBe(message);
+  });
+  it('Testa se a função retorna a informação de que o zoo está aberto ou fechado dependendo do horário', () => {
+    expect(getOpeningHours('Friday', '12:00-PM')).toBe('The zoo is open');
+    expect(getOpeningHours('Sunday', '10:00-PM')).toBe('The zoo is closed');
+  });
+});
