@@ -24,4 +24,13 @@ describe("Testes da função getOpeningHours", () => {
     expect(getOpeningHours('Friday', '12:00-PM')).toBe('The zoo is open');
     expect(getOpeningHours('Sunday', '10:00-PM')).toBe('The zoo is closed');
   });
+  it('Testa se a função retorna um erro se o hora passada a função não tiver valores entre 0 e 12', () => {
+    expect(() => getOpeningHours('Wednesday', '30:00-AM')).toThrowError(/^The hour must be between 0 and 12$/);
+  });
+  it('Testa se a função retorna um erro se os minutos passados a função não tiver valores entre 0 e 59', () => {
+    expect(() => getOpeningHours('Wednesday', '11:71-AM')).toThrowError(/^The minutes must be between 0 and 59$/);
+  });
+  it('Testa se o dia passado a função é um dia válido', () => {
+    expect(() => getOpeningHours('Carnival', '12:00-PM')).toThrowError(/^The day must be valid. Example: Monday$/);
+  });
 });
