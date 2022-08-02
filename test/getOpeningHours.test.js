@@ -33,4 +33,11 @@ describe('Testes da função getOpeningHours', () => {
   it('Testa se o dia passado a função é um dia válido', () => {
     expect(() => getOpeningHours('Carnival', '12:00-PM')).toThrowError(/^The day must be valid. Example: Monday$/);
   });
+  it('Testa se a função retorna um erro caso a abreviação do horário esteja incorreta', () => {
+    expect(() => getOpeningHours('Tuesday', '04:00-F1')).toThrowError(/^The abbreviation must be 'AM' or 'PM'$/);
+  });
+  it('Testa se a função retorna um erro caso o horário não contenha apenas números', () => {
+    expect(() => getOpeningHours('Saturday', '1O:10-AM')).toThrowError(/^The hour should represent a number$/);
+    expect(() => getOpeningHours('Friday', '11:3O-AM')).toThrowError(/^The minutes should represent a number$/);
+  });
 });
