@@ -18,4 +18,10 @@ describe('Testes da função HandlerElephants', () => {
   it('Testa se ao passar o parâmetro averageAge, a função retorna a idade média dos elefantes', () => {
     expect(handlerElephants('averageAge')).toBeCloseTo(10.5);
   });
+  it('Testa se a função retorna a região que os elefantes habitam ao passar o parâmetro location', () => {
+    expect(handlerElephants('location')).toBe('NW');
+  });
+  it('Testa se a função retorna null caso o parâmetro não contemple uma funcionalidade', () => {
+    expect(handlerElephants('abc')).toBeNull();
+  });
 });
