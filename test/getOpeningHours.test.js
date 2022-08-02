@@ -1,7 +1,7 @@
-const getOpeningHours = require("../src/getOpeningHours");
+const getOpeningHours = require('../src/getOpeningHours');
 
-describe("Testes da função getOpeningHours", () => {
-  it("Testa se a função retorna um objeto com todos os dias e horários de funcionamento caso não receba parâmetros", () => {
+describe('Testes da função getOpeningHours', () => {
+  it('Testa se a função retorna um objeto com todos os dias e horários de funcionamento caso não receba parâmetros', () => {
     expect(getOpeningHours()).toEqual({
       Tuesday: { open: 8, close: 6 },
       Wednesday: { open: 8, close: 6 },
